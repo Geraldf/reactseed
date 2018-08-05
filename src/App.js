@@ -1,8 +1,8 @@
 import React, { Component, Glyphicon } from 'react';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { Router, Route, RootComponent } from 'react-router-dom';
-import {MyHome} from './Home/Home';
-import {Device} from './Devices/Device';
+import { Home }  from './Home';
+import { Device } from './Devices/Device';
 
 
 import logo from './logo.svg';
@@ -48,7 +48,7 @@ class App extends Component {
                 </SideNav>
                 <main>
                     <Route path="/" exact component={props => <RootComponent />} />
-                    <Route path="/home" component={props => <MyHome />} />
+                    <Route path="/home" component={props => <Home />} />
                     <Route path="/devices" component={props => <Device />} />
                 </main>
             </React.Fragment>
