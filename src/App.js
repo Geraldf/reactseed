@@ -1,4 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Glyphicon } from 'react';
+import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import { Router, Route, RootComponent } from 'react-router-dom';
+import {MyHome} from './Home/Home';
+import {Device} from './Devices/Device';
+
+
 import logo from './logo.svg';
 //import './App.css';
 import { Grid } from 'react-bootstrap';
@@ -9,8 +15,46 @@ class App extends Component {
       <div className="App">
       <Grid>
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" width={100} />
-          <h1 className="App-title">Welcome to React</h1>
+        <Router>
+        <Route render={({ location, history }) => (
+            <React.Fragment>
+                <SideNav
+                    onSelect={(selected) => {
+                        const to = '/' + selected;
+                        if (location.pathname !== to) {
+                            history.push(to);
+                        }
+                    }}
+                >
+                    <SideNav.Toggle />
+                    <SideNav.Nav defaultSelected="home">
+                        <NavItem eventKey="home">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+                            <NavText>
+                                Home
+                            </NavText>
+                        </NavItem>
+                        <NavItem eventKey="devices">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
+                            </NavIcon>
+                            <NavText>
+                                Devices
+                            </NavText>
+                        </NavItem>
+                    </SideNav.Nav>
+                </SideNav>
+                <main>
+                    <Route path="/" exact component={props => <RootComponent />} />
+                    <Route path="/home" component={props => <MyHome />} />
+                    <Route path="/devices" component={props => <Device />} />
+                </main>
+            </React.Fragment>
+        )}
+        />
+    </Router>
         </header>
         
         <p className="App-intro">
