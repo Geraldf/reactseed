@@ -5,6 +5,13 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import registerServiceWorker from './registerServiceWorker';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import { BrowserRouter } from 'react-router-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>
+    , document.getElementById('root')
+);
 registerServiceWorker();

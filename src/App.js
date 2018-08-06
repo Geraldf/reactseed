@@ -15,15 +15,12 @@ class App extends Component {
       <div className="App">
       <Grid>
         <header className="App-header">
-        <BrowserRouter>
-        <Route render={({ location, history }) => (
+        
             <React.Fragment>
                 <SideNav
                     onSelect={(selected) => {
                         const to = '/' + selected;
-                        if (location.pathname !== to) {
-                            history.push(to);
-                        }
+                        
                     }}
                 >
                     <SideNav.Toggle />
@@ -47,14 +44,12 @@ class App extends Component {
                     </SideNav.Nav>
                 </SideNav>
                 <main>
-                    <Route path="/" exact component={props => <App />} />
-                    <Route path="/home" component={props => <Home />} />
-                    <Route path="/devices" component={props => <Device />} />
+                    
                 </main>
             </React.Fragment>
         )}
         />
-    </BrowserRouter>
+  
         </header>
         
         <p className="App-intro">
