@@ -1,11 +1,11 @@
-import React, { Component, Glyphicon } from 'react';
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import { Router, Route, RootComponent } from 'react-router-dom';
-import { Home }  from './Home';
-import { Device } from './Devices/Device';
+import React, { Component } from 'react';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import { BrowserRouter , Route } from 'react-router-dom';
+import  Home   from './Home';
+import  Device  from './Devices/Device';
 
 
-import logo from './logo.svg';
+//import logo from './logo.svg';
 //import './App.css';
 import { Grid } from 'react-bootstrap';
 
@@ -15,7 +15,7 @@ class App extends Component {
       <div className="App">
       <Grid>
         <header className="App-header">
-        <Router>
+        <BrowserRouter>
         <Route render={({ location, history }) => (
             <React.Fragment>
                 <SideNav
@@ -47,14 +47,14 @@ class App extends Component {
                     </SideNav.Nav>
                 </SideNav>
                 <main>
-                    <Route path="/" exact component={props => <RootComponent />} />
+                    <Route path="/" exact component={props => <App />} />
                     <Route path="/home" component={props => <Home />} />
                     <Route path="/devices" component={props => <Device />} />
                 </main>
             </React.Fragment>
         )}
         />
-    </Router>
+    </BrowserRouter>
         </header>
         
         <p className="App-intro">
