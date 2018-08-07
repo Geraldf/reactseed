@@ -3,59 +3,66 @@ import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import { BrowserRouter , Route } from 'react-router-dom';
 import  Home   from './Home';
 import  Device  from './Devices/Device';
+import { Link } from "react-router-dom";
 
 
 //import logo from './logo.svg';
 //import './App.css';
 import { Grid } from 'react-bootstrap';
 
+
+
+
+
+
 class App extends Component {
+
+    constructor(){
+        super();
+         this.Home = () => (
+            <div>
+              <h2> Home </h2>
+            </div>
+          );
+          
+        this.Airport = () => (
+            <div>
+               <ul>
+                <li>Jomo Kenyatta</li>
+                <li>Tambo</li>
+                <li>Murtala Mohammed</li>
+              </ul>
+            </div>
+          );
+          
+         this.City = () => (
+            <div>
+              <ul>
+                <li>San Francisco</li>
+                <li>Istanbul</li>
+                <li>Tokyo</li>
+              </ul>
+            </div>
+          );
+    };
+    
+
+
+
   render() {
     return (
-      <div className="App">
-      <Grid>
-        <header className="App-header">
-        
-            <React.Fragment>
-                <SideNav
-                    onSelect={(selected) => {
-                        const to = '/' + selected;
-                        
-                    }}
-                >
-                    <SideNav.Toggle />
-                    <SideNav.Nav defaultSelected="home">
-                        <NavItem eventKey="home">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                Home
-                            </NavText>
-                        </NavItem>
-                        <NavItem eventKey="devices">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
-                            </NavIcon>
-                            <NavText>
-                                Devices
-                            </NavText>
-                        </NavItem>
-                    </SideNav.Nav>
-                </SideNav>
-                <main>
-                    
-                </main>
-            </React.Fragment>
-        )}
-        />
-  
-        </header>
-        
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        </Grid>
+        <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/airports">Airports</Link></li>
+          <li><Link to="/cities">Cities</Link></li>
+        </ul>
+
+        <Route path="/" exact component={this.Home}/>
+        <Route path="/airports" component={this.Airport}/>
+        <Route path="/cities" component={this.City}/>
+    
+     
       </div>
     );
   }
