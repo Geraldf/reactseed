@@ -36,6 +36,10 @@
   "dependencies": {
     "create-react-class": "^15.6.3",
     "immutable": "^3.8.2",
-    "react": "^16.4.2"
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-addons-pure-render-mixin": "^15.6.2",
+    "react-router": "^2.8.1",
+    "react-router-dom": "^4.3.1"
   }
 }
